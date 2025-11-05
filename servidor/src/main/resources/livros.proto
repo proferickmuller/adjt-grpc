@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+message Livro {
+  int32 id = 1;
+  string titulo = 2;
+  string autor = 3;
+  int32 ano_publicacao = 4;
+}
+
+message NovoLivro {
+  string titulo = 1;
+  string autor = 2;
+  int32 ano_publicacao = 3;
+}
+
+message LivroId {
+  int32 id = 1;
+}
+
+message Livros {
+  repeated Livro livros = 1;
+}
+
+service Biblioteca {
+  rpc AdicionarLivro (NovoLivro) returns (Livro);
+  rpc ListarLivros (google.protobuf.Empty) returns (Livros);
+  rpc ObterLivroPorId (LivroId) returns (Livro);
+}
