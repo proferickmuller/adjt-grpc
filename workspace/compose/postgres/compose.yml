@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_USER: bibliotecaria
+      POSTGRES_PASSWORD: senhadificil
+      POSTGRES_DB: biblioteca
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/18/data
+    networks:
+      - grpc_demo
+
+volumes:
+  pgdata:
+
+networks:
+  grpc_demo:
+    driver: bridge

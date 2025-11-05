@@ -2,6 +2,8 @@ syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 
+option java_package = "br.dev.erm.biblioteca";
+
 message Livro {
   int32 id = 1;
   string titulo = 2;
@@ -23,8 +25,17 @@ message Livros {
   repeated Livro livros = 1;
 }
 
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
 service Biblioteca {
   rpc AdicionarLivro (NovoLivro) returns (Livro);
   rpc ListarLivros (google.protobuf.Empty) returns (Livros);
   rpc ObterLivroPorId (LivroId) returns (Livro);
+  rpc SayHello (HelloRequest) returns (HelloReply);
 }
