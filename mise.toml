@@ -2,3 +2,4 @@
 java = "21"
 quarkus = "latest"
 maven = "latest"
+graalvm = "21"
