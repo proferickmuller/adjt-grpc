@@ -1,0 +1,22 @@
+meta {
+  name: Livros GRPC
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: http://localhost:9000
+  method: /Biblioteca/ObterLivroPorId
+  body: grpc
+  auth: inherit
+  methodType: unary
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "id":1
+    }
+  '''
+}

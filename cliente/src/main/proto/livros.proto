@@ -6,7 +6,7 @@ option java_package = "br.dev.erm.biblioteca";
 option java_outer_classname = "BibliotecaProto";
 
 message Livro {
-  int64 id = 1;
+  int32 id = 1;
   string titulo = 2;
   string autor = 3;
   int32 ano_publicacao = 4;
@@ -19,15 +19,24 @@ message NovoLivro {
 }
 
 message LivroId {
-  int64 id = 1;
+  int32 id = 1;
 }
 
 message Livros {
   repeated Livro livros = 1;
 }
 
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
 service Biblioteca {
   rpc AdicionarLivro (NovoLivro) returns (Livro);
   rpc ListarLivros (google.protobuf.Empty) returns (Livros);
   rpc ObterLivroPorId (LivroId) returns (Livro);
+  rpc SayHello (HelloRequest) returns (HelloReply);
 }
