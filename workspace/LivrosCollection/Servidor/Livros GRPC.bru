@@ -6,7 +6,7 @@ meta {
 
 grpc {
   url: http://localhost:9000
-  method: /Biblioteca/ObterLivroPorId
+  method: /Biblioteca/ListarLivros
   body: grpc
   auth: inherit
   methodType: unary
@@ -16,7 +16,9 @@ body:grpc {
   name: message 1
   content: '''
     {
-      "id":1
+      "titulo": "defleo",
+      "autor": "aequitas",
+      "ano_publicacao": 883
     }
   '''
 }

@@ -67,9 +67,9 @@ public class BibliotecaService implements Biblioteca {
     @Override
     @Transactional
     public Uni<BibliotecaProto.Livro> obterLivroPorId(BibliotecaProto.LivroId request) {
-        Long livroId = (long) request.getId();
+        Long livroId = request.getId();
         LivroEntity livroEntity = livroRepository.findById(livroId);
-        // System.out.println(livroEntity);
+
         if (livroEntity == null) {
             return Uni.createFrom().item(() -> BibliotecaProto.Livro.newBuilder().build());
         }
@@ -81,12 +81,4 @@ public class BibliotecaService implements Biblioteca {
                         .build()
         );
     }
-
-//    @Override
-//    public Uni<BibliotecaProto.HelloReply> sayHello(BibliotecaProto.HelloRequest request) {
-//
-//        return Uni.createFrom().item(() ->
-//                BibliotecaProto.HelloReply.newBuilder().setMessage("Hello " + request.getName()).build());
-//
-//    }
 }

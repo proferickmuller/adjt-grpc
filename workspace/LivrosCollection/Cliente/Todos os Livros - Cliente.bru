@@ -1,0 +1,16 @@
+meta {
+  name: Todos os Livros - Cliente
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{hostCliente}}/livrosClient/v1/livro
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
