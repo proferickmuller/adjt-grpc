@@ -1,8 +1,7 @@
 package br.dev.erm;
 
 import br.dev.erm.biblioteca.Biblioteca;
-import br.dev.erm.biblioteca.BibliotecaGrpc;
-import br.dev.erm.biblioteca.LivrosOuterClass;
+import br.dev.erm.biblioteca.BibliotecaProto;
 import io.quarkus.grpc.GrpcClient;
 import io.smallrye.mutiny.Uni;
 import jakarta.ws.rs.GET;
@@ -26,8 +25,8 @@ public class ExampleResource {
     @Path("/{name}")
     public Uni<String> hello(String name) {
         return biblioteca.sayHello(
-                LivrosOuterClass.HelloRequest.newBuilder().setName("Erick").build()
-        ).onItem().transform(LivrosOuterClass.HelloReply::getMessage);
+                BibliotecaProto.HelloRequest.newBuilder().setName(name).build()
+        ).onItem().transform(helloReply -> helloReply.getMessage());
     }
 
 }

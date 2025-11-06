@@ -3,6 +3,7 @@ syntax = "proto3";
 import "google/protobuf/empty.proto";
 
 option java_package = "br.dev.erm.biblioteca";
+option java_outer_classname = "BibliotecaProto";
 
 message Livro {
   int32 id = 1;
